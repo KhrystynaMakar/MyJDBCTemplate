@@ -1,6 +1,5 @@
 package com.springapp.mvc.repo;
 
-import com.springapp.mvc.dao.UserDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +30,6 @@ public class UserJDBCTemplateTest {
 
     @Test
     public void testCreate() throws Exception {
-        assertEquals(1, userJDBCTemplate.create("Lola"));
+        assertEquals(1, userJDBCTemplate.create("Lulu"));
     }
 }

@@ -6,6 +6,7 @@ import com.springapp.mvc.entity.User;
 import javax.sql.DataSource;
 import java.util.*;
 
+import com.springapp.mvc.service.CustomConverter;
 import com.springapp.mvc.service.UserMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -29,17 +30,15 @@ public class UserJDBCTemplate implements UserDAO {
     @Override
     public int create(String name) {
 //        jdbcTemplateObject.update(userRB.getString("create"), name);
-            Map namedParameters = new HashMap();
-            namedParameters.put("name", name);
-           // namedParameterJdbcTemplate.update(userRB.getString("create"), namedParameters);
-            System.out.println("Created Record Name = " + name);
+        Map<String, Object> namedParameters = new HashMap<String, Object>();
+        namedParameters.put("name", name);
         return namedParameterJdbcTemplate.update(userRB.getString("create"), namedParameters);
     }
 
     @Override
     public void updateName(Integer id, String name) {
 //        jdbcTemplateObject.update(userRB.getString("update"), name, id);
-        Map namedParameters = new HashMap();
+        Map<String, Object> namedParameters = new HashMap();
         namedParameters.put("name", name);
         namedParameters.put("id", id);
         namedParameterJdbcTemplate.update(userRB.getString("update"), namedParameters);
@@ -62,7 +61,7 @@ public class UserJDBCTemplate implements UserDAO {
     @Override
     public void deleteUser(Integer id) {
 //        jdbcTemplateObject.update(userRB.getString("delete"), id);
-        Map namedParameters = new HashMap();
+        Map<String, Object> namedParameters = new HashMap();
         namedParameters.put("id", id);
         namedParameterJdbcTemplate.update(userRB.getString("delete"), namedParameters);
         System.out.println("Deleted Record with ID = " + id );
